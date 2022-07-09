@@ -7,27 +7,27 @@ using namespace std;
 #define endl "\n"
 #define ull unsigned long long
 #define ll long long
-// NOT_DONE________________________
-ll big = 1000000007;
-// map<ll, ll> f;
-ll f[10000] = {};
-ll fibo(ll n){
-    if(n == 1 || n == 2){
-        return 1;
-    }
-    if(f[n] == 0){
-        f[n] = fibo(n - 1) + fibo(n - 2);
-        cout << n << " " << f[n] << " "<< endl;
-        return f[n];
-    }
-}
-int main(){
+
+int main()
+{
     faster;
     int t;
     cin >> t;
     while(t--){
-        ll n;
-        cin >> n;
-        cout << fibo(n) << endl;
+        string a;
+        int ans = 0, n;
+        cin >> a;
+        int m = a.size();
+        if(a.size() <= 1){
+            n = (a[0] - '0');
+        }
+        else{
+            n = (a[m - 2] - '0') * 10 + (a[m - 1] - '0');
+        }
+        if(n % 4 == 0){
+            ans = 4;
+        }
+        cout << ans << endl;
     }
 }
+

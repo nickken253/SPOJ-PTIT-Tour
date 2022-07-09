@@ -7,31 +7,19 @@ using namespace std;
 #define endl "\n"
 #define ull unsigned long long
 #define ll long long
-int check(int n){
-    while(n != 0){
-        int a = n % 10;
-        if(a != 4 && a != 7){
-            // cout << a << endl;
-            return 0;
-        }
-        n /= 10;
-    }
-    return 1;
-}
+
 int main()
 {
     faster;
-    int n;
+    int a[14] = {4, 7, 44, 47, 74, 77, 444, 447, 474, 477, 744, 747, 774, 777};
+    int n, check = 0;
     cin >> n;
-    for(int i = 2; i <= n; i++){
-        if(n % i == 0){
-            if(check(i) == 1){
-                cout << "YES";
-                // cout << i << endl;
-                return 0;
-            }
+    for(int i = 0; i < 14; i++){
+        if(n % a[i] == 0){
+            check = 1;
+            break;
         }
     }
-    cout << "NO";
-    // cout << check(47);
+    if(check == 0) cout << "NO";
+    else cout << "YES";
 }

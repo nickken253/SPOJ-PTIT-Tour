@@ -7,15 +7,38 @@ using namespace std;
 #define endl "\n"
 #define ull unsigned long long
 #define ll long long
-// NOT_DONE_____________________________
-int tong(string a, int sum = 0){
-    
-}
-int main(){
+
+int main()
+{
     faster;
-    int tong = 0, tmp = 0;
     string a;
     cin >> a;
-    
-    cout << tong << endl;
+    stack<int> ss;
+    for(int i = 0; i < a.size(); i++){
+        if(a[i] == 'C') ss.push(12);
+        if(a[i] == 'H') ss.push(1);
+        if(a[i] == 'O') ss.push(16);
+        if(a[i] == '(') ss.push(0);
+        if(a[i] == ')'){
+            int sum = 0;
+            while(ss.top() != 0){
+                sum += ss.top();
+                ss.pop();
+            }
+            ss.pop();
+            ss.push(sum);
+        } 
+        if(a[i] >= '2' && a[i] <= '9'){
+            int sum;
+            sum = (a[i] - '0') * ss.top();
+            ss.pop();
+            ss.push(sum);
+        }
+    }
+    int sum = 0;
+    while(ss.size() != 0){
+        sum += ss.top();
+        ss.pop();
+    }
+    cout << sum;
 }
