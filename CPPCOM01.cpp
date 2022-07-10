@@ -1,36 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int a[25], n;
-void khoiTao(){
-    for(int i = 0; i < n; i++){
-        a[i] = 0;
-    }
-}
-void in(){
-    for(int i = 1; i <= n; i++) cout << a[i];
-    cout << " ";
-}
-void sinh(int k){
-    if(k == n){
-        in();
-    }
-    else{
-        a[k + 1] = 0;
-        sinh(k + 1);
-        a[k + 1] = 1;
-        sinh(k + 1);
-    }
-}
 int main(){
+    int n, m = 1;
+    cin >> n;
+    string a[2000000];
+    a[0] = "0";
+    a[1] = "1";
     int t;
     cin >> t;
-    while(t--)
-    {
-        // int n;
-        cin >> n;
-        khoiTao();
-        sinh(0);
+    while(t--){
+        int k = 0, h = 2;
+        for(int i = 0; i < n; i ++){
+            m *= 2;
+        }
+        for(int i = 2; i < m; i ++){
+            a[i] = "1" + a[k];
+            if(k == h - 1){
+                k = 0;
+                for(int j = 0; j <= i - h; j++){
+                    a[j] = "0" + a[j];
+                }
+                h *= 2;
+            }
+            else{
+                k++;
+            }
+        }
+        for(int i = 0; i < m; i ++){
+            cout << a[i] << endl;
+        }
         cout << endl;
     }
+    
 }

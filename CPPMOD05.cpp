@@ -23,12 +23,9 @@ int main()
     while (t--)
     {
         string a;
-        ll b, m, kq = 1;
-        cin >> a >> b >> m;
-        ll d = chiaDu(a, m);
-        for(ll i = 0; i < b; i++){
-            kq = (kq * d) % m; 
-        }
-        cout << kq % m << endl;
+        ll b;
+        cin >> a >> b;
+        ll c = chiaDu(a, b);
+        cout << c << endl;
     }
 }

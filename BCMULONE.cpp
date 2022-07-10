@@ -7,7 +7,7 @@ using namespace std;
 #define endl "\n"
 #define ull unsigned long long
 #define ll long long
-//QUÁ_THỜI_GIAN_______________
+
 int main()
 {
     faster;

@@ -7,21 +7,23 @@ using namespace std;
 #define endl "\n"
 #define ull unsigned long long
 #define ll long long
+
 string cong(string a, string b){
-    int du = 0;
-    string c = "";
-    while(a.size() < b.size()) a = '0' + a;
-    while(a.size() > b.size()) b = '0' + b;
-    for(int i = a.size() - 1; i >= 0; i--){
-        du = (a[i] - '0') + (b[i] - '0') + du;
-        char k = (du % 10) + '0';
-        du /= 10;
-        c = k + c;
-    }
-    if(du != 0){
-        c = '1' + c;
-    }
-    return c;
+	string c = "";
+	int du = 0;
+	char k;
+	while(a.size() < b.size()) a = '0' + a;
+	while(b.size() < a.size()) b = '0' + b;
+	for(int i = a.size() - 1; i >= 0; i--){
+		du = du + a[i] - '0' + b[i] - '0';
+		k = du % 10 + '0';
+		c = k + c;
+		du /= 10;
+	}
+	if(du == 1){
+		c = '1' + c;
+	}
+	return c;
 }
 string nhan(string a, string b){
 	if(a == "0" || b == "0"){
@@ -63,18 +65,15 @@ string nhan(string a, string b){
 	}
 	return c;
 }
-int main(){
+int main()
+{
     faster;
     int t;
     cin >> t;
-    while(t--){
-        int a;
-        cin >> a;
-        string sum = "1";
-        for(int i = 1; i <= a; i ++){
-            sum = nhan(sum,to_string(i));
-        }
-        cout << sum << endl;
+    while (t--)
+    {
+        string a, b;
+        cin >> a >> b;
+        cout << nhan(a, b) << endl;
     }
 }
-
